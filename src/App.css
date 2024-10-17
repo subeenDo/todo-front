@@ -3,8 +3,6 @@ body{
   background-color: aliceblue !important; 
 }
 
-
-
 .todo-item{
   border: 1px solid lightblue;
   background-color: white;
@@ -23,8 +21,6 @@ body{
   padding: 10px;
   width:100%;
   border: 1px solid lightblue;
-  
-  
 }
 .input-box:focus{
   outline: none;
@@ -33,7 +29,7 @@ body{
   height: 40px;
   width: 100%;
   border: none;
-  background-color: lightblue;
+  background-color: #7EADCF;
   color: white;
 }
 .button-add:hover{
@@ -55,4 +51,10 @@ body{
 .item-complete{
   background-color: gainsboro;
   color:white;
+}
+
+.todo-title{
+  color:#7EADCF;
+  margin-bottom: 20px;
+  font-weight: bold;
 }
