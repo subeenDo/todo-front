@@ -23,7 +23,7 @@ function App() {
         isComplete: false,
       });
       if(response.status==200){
-        console.log("등록 성공")
+        console.log("Task가 등록되었습니다.");
         //1. 입력한 값이 안사라짐 -> 초기화
         setTodoValue("");
         //2. 추가한 거 즉시 보여주기 ->업데이트된 getTasks 받아오기
@@ -44,6 +44,7 @@ function App() {
         isComplete: !task.isComplete,
       });
       if (response.status === 200) {
+        console.log("상태가 변경되었습니다.");
         getTasks();
       }
     } catch (error) {
@@ -55,10 +56,10 @@ function App() {
     try {
         const response = await api.delete(`/tasks/${id}`);
         if (response.status === 200) {
-            console.log("작업이 삭제되었습니다.");
+            console.log("Task가 삭제되었습니다.");
             getTasks(); 
         } else {
-            throw new Error('작업을 삭제할 수 없습니다.');
+            throw new Error('Task를 삭제할 수 없습니다.');
         }
     } catch (err) {
         console.log("오류:", err);
