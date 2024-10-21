@@ -3,6 +3,8 @@ body{
   background-color: aliceblue !important; 
 }
 
+
+
 .todo-item{
   border: 1px solid lightblue;
   background-color: white;
@@ -21,15 +23,21 @@ body{
   padding: 10px;
   width:100%;
   border: 1px solid lightblue;
+  
+  
 }
 .input-box:focus{
   outline: none;
+}
+button{
+  background-color: lightblue;
+  color: white;
 }
 .button-add{
   height: 40px;
   width: 100%;
   border: none;
-  background-color: #7EADCF;
+  background-color: lightblue;
   color: white;
 }
 .button-add:hover{
@@ -53,8 +61,33 @@ body{
   color:white;
 }
 
-.todo-title{
-  color:#7EADCF;
-  margin-bottom: 20px;
-  font-weight: bold;
+.login-box{
+  border:1px solid lightblue;
+  max-width: 600px;
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+}
+.login-box label{
+  font-weight: 700;
+}
+
+.display-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+}
+
+.button-box{
+  display:flex;
+  justify-content: space-between
+}
+
+.button-primary{
+  background-color: lightblue;
+  color: #ffffff;
+  border:none;
 }
