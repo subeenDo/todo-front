@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import api from "../utils/api";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const LoginPage = () => {
+const LoginPage = ({user, setUser}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [user, setUser] = useState(null);
   const navigate = useNavigate();
   
 
@@ -35,7 +34,9 @@ const LoginPage = () => {
       setError(error.message || '서버와의 통신에 문제가 발생했습니다.');
     }
   };
-
+  if(user){
+    return <Navigate to = "/"/>
+  }
   return (
     <div className="display-center">
       {error && <div className="error-message">{error}</div>} 

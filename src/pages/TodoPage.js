@@ -4,13 +4,16 @@ import api from "../utils/api";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import { Navigate } from "react-router-dom"
 
-const TodoPage = () => {
+const TodoPage = ({user, setUser}) => {
   const [todoList, setTodoList] = useState([]);
   const [todoValue, setTodoValue] = useState("");
+  const [redirectToLogin, setRedirectToLogin] = useState(false);
 
   const getTasks = async () => {
     const response = await api.get("/tasks");
+    console.log("taskList", response.data.data);
     setTodoList(response.data.data);
   };
   useEffect(() => {
@@ -46,9 +49,15 @@ const TodoPage = () => {
   const toggleComplete = async (id) => {
     try {
       const task = todoList.find((item) => item._id === id);
-      const response = await api.put(`/tasks/${id}`, {
+      const updateData = {
         isComplete: !task.isComplete,
-      });
+      };
+  
+      if (user) {
+        updateData.author = user._id;
+      }
+  
+      const response = await api.put(`/tasks/${id}`, updateData);
       if (response.status === 200) {
         getTasks();
       }
@@ -56,8 +65,32 @@ const TodoPage = () => {
       console.log("error", error);
     }
   };
+  const handleLogout = () => {
+    
+    sessionStorage.removeItem("token");
+
+    setUser(null);
+
+    setRedirectToLogin(true);
+
+  };
+
+  
   return (
     <Container>
+      <Row className="add-item-row align-items-center">
+        <Col xs={12} sm={10}>
+          <h2 className="user-title" style={{ display: 'inline' }}>
+            {user.name}님 환영합니다.
+          </h2>
+        </Col>
+        <Col xs={12} sm={2} className="d-flex justify-content-end">
+          <button className="button-delete" onClick={handleLogout}>
+            Logout
+          </button>
+        </Col>
+      </Row>
+
       <Row className="add-item-row">
         <Col xs={12} sm={10}>
           <input

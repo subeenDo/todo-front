@@ -10,7 +10,8 @@ const TodoItem = ({ item, deleteTask, completeTask }) => {
     <Row>
       <Col xs={12}>
         <div className="todo-item" style={{ backgroundColor, color }}>
-          <div className="todo-content">{item.task}</div>
+          <div className="todo-content">{item.task}  by {item.author ? item.author.name : 'Unknown'}</div>
+          
           <div>
             <button
               className="button-delete"
